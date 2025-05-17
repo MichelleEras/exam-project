@@ -1,0 +1,7 @@
+streamlit
+psycopg
+folium
+streamlit_folium
+pyarrow
+pandas
+streamlit-card
