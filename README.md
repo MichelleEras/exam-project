@@ -18,3 +18,18 @@ You will need a running postgres db server
 Run pip3 install -r requirements.txt
 Edit the .env file with your postgres username and password (do not change the openai key)
 Run python3 import_sql.py
+
+# Running the project
+
+To run the dashboard the command(from within the venv): 
+
+streamlit run dashboard.py
+
+There is a bug in streamlit where you need to refresh page to see pin on the map.
+
+# How to use dasbhoard
+
+- Select a city
+- Select a period you will travel
+- See the weather prediction
+- Wait for OpenAI to generate your travelplan

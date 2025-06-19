@@ -8,9 +8,10 @@ import math
 import pandas as pd
 from streamlit_card import card
 import dotenv
+import os
 
 dotenv.load_dotenv()
-CONNECTION_STRING = f"user=postgres password=Mamicris04 dbname=project"
+CONNECTION_STRING = f"user={os.getenv("SQL_USER")} password={os.getenv("SQL_PASSWORD")} dbname=project"
 with pg.connect(CONNECTION_STRING) as connection:
     cursor = connection.cursor()
     cursor.execute('Select city_name from cities')
@@ -66,7 +67,7 @@ with pg.connect(CONNECTION_STRING) as connection:
                     st.write(f"average temperature: {avg_temp_c:.2f}°C")
                     st.write(f"Max temperature: {max_temp_c:.2f}°C ")
                     st.write(f"Min temperature: {min_temp_c:.2f}°C""")
-        st.write('Loading AI travel plan...')
+        st.write('Loading AI travel plan....')
         travel_plan= openai_planner.planner_trip(selected_city, start_date,stop_date)
         st.write(travel_plan)
       
