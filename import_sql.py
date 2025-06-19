@@ -6,7 +6,6 @@ CONNECTION_STRING = f"user=postgres password=Mamicris04 dbname=project"
 def restore_sql_file(sql_file_path, db_name, user, password, host="localhost", port="5432"):
     try:
         with psycopg.connect(
-            dbname="postgres",
             user=user,
             password=password,
             host=host,
