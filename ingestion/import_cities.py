@@ -1,11 +1,15 @@
 import psycopg as pg
 import pandas as pd
+import os
+import dotenv
+
+dotenv.load_dotenv()
 
 
 # configure the database connection string
 # comment the right one for use with your setup and adapt accordingly
 # CONNECTION_STRING = f"user=postgres dbname=python-data-developer options=--search_path={SCHEMA_NAME} passfile=pgpass.conf"
-CONNECTION_STRING = f"user=postgres password=Mamicris04 dbname=project"
+CONNECTION_STRING = f"user={os.getenv("SQL_USER")} password={os.getenv("SQL_PASSWORD")} dbname=project"
 
 def insert_city(cursor,station_id, city_name, country, state, iso2, iso3, latitude, longitude):
     # Insert a city into the database

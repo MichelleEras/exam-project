@@ -66,6 +66,7 @@ with pg.connect(CONNECTION_STRING) as connection:
                     st.write(f"average temperature: {avg_temp_c:.2f}°C")
                     st.write(f"Max temperature: {max_temp_c:.2f}°C ")
                     st.write(f"Min temperature: {min_temp_c:.2f}°C""")
+        st.write('Loading AI travel plan...')
         travel_plan= openai_planner.planner_trip(selected_city, start_date,stop_date)
         st.write(travel_plan)
       

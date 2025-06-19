@@ -1,7 +1,9 @@
 import psycopg
 from psycopg.errors import Error
+import dotenv
+import os
 
-CONNECTION_STRING = f"user=postgres password=Mamicris04 dbname=project"
+dotenv.load_dotenv()
 
 def restore_sql_file(sql_file_path, db_name, user, password, host="localhost", port="5432"):
     try:
@@ -35,18 +37,18 @@ def restore_sql_file(sql_file_path, db_name, user, password, host="localhost", p
                     if stmt:
                         cur.execute(stmt + ';')
 
-            print("✅ Database restored successfully.")
+            print("Database restored successfully.")
 
     except Error as e:
-        print(f"❌ Database error: {e}")
+        print(f"Database error: {e}")
     except Exception as e:
-        print(f"❌ General error: {e}")
+        print(f"General error: {e}")
 
 # Example usage
 if __name__ == "__main__":
     restore_sql_file(
         sql_file_path="backup.sql",
         db_name="project",
-        user="postgres",
-        password="Mamicris04"
+        user=os.getenv("SQL_USER"),
+        password=os.getenv("SQL_PASSWORD")
     )

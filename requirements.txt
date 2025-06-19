@@ -5,3 +5,5 @@ streamlit_folium
 pyarrow
 pandas
 streamlit-card
+dotenv
+openai
